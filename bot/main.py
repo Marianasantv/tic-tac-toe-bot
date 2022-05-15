@@ -5,7 +5,7 @@ import requests
 
 def main():
 
-    NAME = "Angel"
+    NAME = "Mariana"
     print("\n------- Starting tic-tac-toe bot -------\n")
 
     # Register phase begins
@@ -47,6 +47,7 @@ def main():
             sleep(1)
             next_move = utils.decide_move(board, PLAYER_ID)
             valid_move = utils.validate_move(board, next_move) # Validates next move
+            print("calculated {}, {}".format(next_move[0], next_move[1]))
 
         print("Move to send, row: {}, col: {}\n".format(next_move[0], next_move[1]))
 

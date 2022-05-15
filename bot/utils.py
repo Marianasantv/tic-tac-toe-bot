@@ -1,6 +1,7 @@
 """
 [Module] Tic-tac-toe bot utilities.
 """
+from os import fork
 from random import randint
 import requests
 from urllib.parse import unquote
@@ -69,6 +70,35 @@ def decide_move(board, player_id):
     """
     Decides next move to make.
     """
+    # Calcular quien es el enemy
+    enemy = "X"
+    if player_id is "X":
+        enemy = "O"
+
+    # PASO 1 - BLOQUEAR
+    # verificar si el enemy va a ganar -> bloquear
+    if board[0][0] == enemy and board[0][1] == enemy and board[0,2] == "-":
+        return [0, 2]
+    if board[0][0] == enemy and board[1][0] == enemy and board[2,0] == "-":
+        return [2, 0]
+
+    # si llega a este punto - puedo hacer cualquier movimiento
+    
+    # PASO 2 - GANAR?
+    # verificar si yo voy a ganar, entonces retornar el unico que me falta
+    if board[0][0] == player_id and board[0][1] == player_id and board[0,2] == "-":
+        return [0, 2]
+    if board[0][0] == player_id and board[1][0] == player_id and board[2,0] == "-":
+        return [2, 0]
+
+    # PASO 3 - ESQUINA
+    # ver si las esquinas estan vacias
+    if board[0][0] == "-":
+        return[0,0]
+    if board[0][2] == "-":
+        return[0,2]
+    
+    # Ultimo recurso, que sea random
     row = randint(0, 2)
     column = randint(0, 2)
     return [row, column]
