@@ -10,4 +10,4 @@ To run the bot, first clone the repository and move into its directory:
 
 Then, run the bot using python:    
 > `$ cd bot`  
-> `$ python main.py`
+> `$ python3 main.py`
