@@ -1,7 +1,7 @@
 """
 [Module] Tic-tac-toe bot utilities.
 """
-from os import fork
+
 from random import randint
 import requests
 from urllib.parse import unquote
@@ -72,7 +72,7 @@ def decide_move(board, player_id):
     """
     # Calcular quien es el enemy
     enemy = "X"
-    if player_id is "X":
+    if player_id == "X":
         enemy = "O"
 
     # PASO 1 - BLOQUEAR
