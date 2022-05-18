@@ -130,10 +130,22 @@ def decide_move(board, player_id):
     
     # PASO 2 - GANAR?
     # verificar si yo voy a ganar, entonces retornar el unico que me falta
-    if board[0][0] == player_id and board[0][1] == player_id and board[0,2] == "-":
+    if board[0][0] == player_id and board[0][1] == player_id and board[0][2] == "-":
         return [0, 2]
-    if board[0][0] == player_id and board[1][0] == player_id and board[2,0] == "-":
+    if board[0][0] == player_id and board[1][0] == player_id and board[2][0] == "-":
         return [2, 0]
+    if board[0][1] == player_id and board[0][2] == player_id and board[0][0] == "-":
+        return [0, 0]
+    if board[0][0] == player_id and board[0][2] == player_id and board[0][1] == "-":
+        return [0, 1]
+    if board[1][0] == player_id and board[1][1] == player_id and board[1][2] == "-":
+        return [1,2]
+    if board[1][2] == player_id and board[1][1] == player_id and board[1][0] == "-":
+        return [1, 0]
+    if board[1][0] == player_id and board[1][2] == player_id and board[1][1] == "-":
+        return [1, 1]
+    
+
 
     # PASO 3 - ESQUINA
     # ver si las esquinas estan vacias
