@@ -123,8 +123,11 @@ def decide_move(board, player_id):
         return [1, 1]
     if board[1][1] == enemy and board[1][2] == enemy and board[1][0] == "-":         
         return [1, 0]
+    if board[2][2] == enemy and board[2][1] == enemy and board[2][0] == "-":         
+        return [2, 0]
+    if board[2][0] == enemy and board[2][2] == enemy and board[2][1] == "-":         
+        return [2, 1]
     
-
     
     # si llega a este punto - puedo hacer cualquier movimiento
     
