@@ -75,7 +75,61 @@ def decide_move(board, player_id):
     if player_id == "X":
         enemy = "O"
 
-    # PASO 1 - BLOQUEAR
+
+
+    # PASO 1 - GANAR?
+    # verificar si yo voy a ganar, entonces retornar el unico que me falta
+    
+    if board[0][0] == player_id and board[0][1] == player_id and board[0][2] == "-":
+        return [0, 2]
+    if board[0][0] == player_id and board[1][0] == player_id and board[2][0] == "-":
+        return [2, 0]
+    if board[0][1] == player_id and board[0][2] == player_id and board[0][0] == "-":
+        return [0, 0]
+    if board[0][0] == player_id and board[0][2] == player_id and board[0][1] == "-":
+        return [0, 1]
+    if board[1][0] == player_id and board[1][1] == player_id and board[1][2] == "-":
+        return [1,2]
+    if board[1][2] == player_id and board[1][1] == player_id and board[1][0] == "-":
+        return [1, 0]
+    if board[1][0] == player_id and board[1][2] == player_id and board[1][1] == "-":
+        return [1, 1]
+    if board[2][2] == player_id and board[2][1] == player_id and board[2][0] == "-":
+        return [2, 0]
+    if board[2][0] == player_id and board[2][2] == player_id and board[2][1] == "-":
+        return [2, 1]
+    if board[2][0] == player_id and board[2][1] == player_id and board[2][2] == "-":
+        return [2, 2]
+    if board[2][0] == player_id and board[0][0] == player_id and board[1][0] == "-":
+        return [1, 0]
+    if board[1][0] == player_id and board[2][0] == player_id and board[0][0] == "-":
+        return [0, 0]
+    if board[0][1] == player_id and board[1][1] == player_id and board[2][1] == "-":
+        return [2, 1]
+    if board[2][1] == player_id and board[0][1] == player_id and board[1][1] == "-":
+        return [1, 1]
+    if board[2][1] == player_id and board[1][1] == player_id and board[0][1] == "-":
+        return [0, 1]
+    if board[0][2] == player_id and board[1][2] == player_id and board[2][2] == "-":
+        return [2, 2]
+    if board[2][2] == player_id and board[0][2] == player_id and board[1][2] == "-":
+        return [1, 2]
+    if board[2][2] == player_id and board[1][2] == player_id and board[0][2] == "-":
+        return [0, 2]
+    if board[0][2] == player_id and board[1][1] == player_id and board[2][0] == "-":
+        return [2, 0]
+    if board[2][0] == player_id and board[0][2] == player_id and board[1][1] == "-":
+        return [1, 1]
+    if board[2][0] == player_id and board[1][1] == player_id and board[0][2] == "-":
+        return [0, 2]
+    if board[2][2] == player_id and board[1][1] == player_id and board[0][0] == "-":
+        return [0, 0]
+    if board[0][0] == player_id and board[2][2] == player_id and board[1][1] == "-":
+        return [1, 1]    
+    if board[0][0] == player_id and board[1][1] == player_id and board[2][2] == "-":
+        return [2, 2]        
+
+    # PASO 2 - BLOQUEAR
     # verificar si el enemy va a ganar -> bloquear
     if board[0][0] == enemy and board[0][1] == enemy and board[0][2] == "-":
         return [0, 2]
@@ -131,56 +185,6 @@ def decide_move(board, player_id):
     
     # si llega a este punto - puedo hacer cualquier movimiento
     
-    # PASO 2 - GANAR?
-    # verificar si yo voy a ganar, entonces retornar el unico que me falta
-    if board[0][0] == player_id and board[0][1] == player_id and board[0][2] == "-":
-        return [0, 2]
-    if board[0][0] == player_id and board[1][0] == player_id and board[2][0] == "-":
-        return [2, 0]
-    if board[0][1] == player_id and board[0][2] == player_id and board[0][0] == "-":
-        return [0, 0]
-    if board[0][0] == player_id and board[0][2] == player_id and board[0][1] == "-":
-        return [0, 1]
-    if board[1][0] == player_id and board[1][1] == player_id and board[1][2] == "-":
-        return [1,2]
-    if board[1][2] == player_id and board[1][1] == player_id and board[1][0] == "-":
-        return [1, 0]
-    if board[1][0] == player_id and board[1][2] == player_id and board[1][1] == "-":
-        return [1, 1]
-    if board[2][2] == player_id and board[2][1] == player_id and board[2][0] == "-":
-        return [2, 0]
-    if board[2][0] == player_id and board[2][2] == player_id and board[2][1] == "-":
-        return [2, 1]
-    if board[2][0] == player_id and board[2][1] == player_id and board[2][2] == "-":
-        return [2, 2]
-    if board[2][0] == player_id and board[0][0] == player_id and board[1][0] == "-":
-        return [1, 0]
-    if board[1][0] == player_id and board[2][0] == player_id and board[0][0] == "-":
-        return [0, 0]
-    if board[0][1] == player_id and board[1][1] == player_id and board[2][1] == "-":
-        return [2, 1]
-    if board[2][1] == player_id and board[0][1] == player_id and board[1][1] == "-":
-        return [1, 1]
-    if board[2][1] == player_id and board[1][1] == player_id and board[0][1] == "-":
-        return [0, 1]
-    if board[0][2] == player_id and board[1][2] == player_id and board[2][2] == "-":
-        return [2, 2]
-    if board[2][2] == player_id and board[0][2] == player_id and board[1][2] == "-":
-        return [1, 2]
-    if board[2][2] == player_id and board[1][2] == player_id and board[0][2] == "-":
-        return [0, 2]
-    if board[0][2] == player_id and board[1][1] == player_id and board[2][0] == "-":
-        return [2, 0]
-    if board[2][0] == player_id and board[0][2] == player_id and board[1][1] == "-":
-        return [1, 1]
-    if board[2][0] == player_id and board[1][1] == player_id and board[0][2] == "-":
-        return [0, 2]
-    if board[2][2] == player_id and board[1][1] == player_id and board[0][0] == "-":
-        return [0, 0]
-    if board[0][0] == player_id and board[2][2] == player_id and board[1][1] == "-":
-        return [1, 1]    
-    if board[0][0] == player_id and board[1][1] == player_id and board[2][2] == "-":
-        return [2, 2]
     
 
     # PASO 3 - ESQUINA
@@ -194,8 +198,7 @@ def decide_move(board, player_id):
     if board[0][2] == "-":
         return[0,2]
     
-    # otras estrategias ara comenzar 
-
+    # otras estrategias para comenzar 
 
     if board[2][0] == player_id and board[1][1] == enemy and board[0][2] == "-":         
         return [0, 2]
